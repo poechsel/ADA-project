@@ -25,12 +25,25 @@ By doing this, we hope to not only gain a better understanding of how social med
 ## Datasets
 
 We had several datasets in mind, each providing a part of the answers we're after:
-- The _Twitter_ dataset from the official list, which contains 1% of the tweets from the year 2017 in plain text format. Even though it does not contain every tweet, it will allow us to obtain a general overview of the behavior behind spread of hashtags without using too much processing power.
-- Data from the _Twitter Standard Search API_ (https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html), which we would use to export all the tweets with a given hashtag within a specific period of time. This would be like a scalper, allowing us to extract more insights about a precise phenomena.
+- The _Twitter_ dataset from the official list, which contains 1% of the tweets from the year 2017 in plain text format. Even though it does not contain every tweet, it will allow us to obtain a general overview of the behavior behind the spread of hashtags without using too much processing power.
+- Data from the _Twitter Standard Search API_ (https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html), which we would use to export all the tweets with a given hashtag within a specific period of time. This would be like a scalpel, allowing us to extract more insights about a precise hashtag.
 - Data from _SocialBlade_ (https://socialblade.com), which would give us the evolution of the number of followers, subscribers and video views of Twitter and YouTube accounts over time. Although SocialBlade does not officially provide a complete dataset or an API to export their data, there are several unofficial scrapers available on GitHub, e.g. https://github.com/vinceh121/socialblade-api.
 
-## A list of internal milestones up until project milestone 2
-Add here a sketch of your planning for the next project milestone.
 
-## Questions for TAa
-Add here some questions you have for us, in general or project-specific.
+## Milestones
+
+Milestone 2 is on November 25th. Until then:
+
+- 11th November:
+    - Load the Twitter dataset.
+    - Find a list of the most impactful hashtags.
+    - Plot their evolution over time.
+    - Find some young (post 2016) and growing youtube channels (SocialBlade only contains data after 2016).
+
+- 18th November:
+    - Track a tweet's origin and measure the popularity of the user who tweeted them (by the number of their followers).
+    - Scrape SocialBlade.
+
+- 25th November
+    - Differentiate between different types of evolution (a video goes viral, increasing augmentation) and model their spread.
+    - Analyze the main factors that affect a tweet's popularity.
