@@ -47,3 +47,16 @@ Milestone 2 is on November 25th. Until then:
 - 25th November
     - Differentiate between different types of evolution (a video goes viral, increasing augmentation) and model their spread.
     - Analyze the main factors that affect a tweet's popularity.
+
+
+# Technicalities:
+
+For now the script `test.py` is an example of script to use with `spark-submit`. It takes one argument, your username. To execute it you can use:
+
+```
+spark-submit --master yarn --deploy-mode client --driver-memory 4G --num-executors 5 --executor-memory 4G --executor-cores 5 test.py USERNAME
+```
+
+Where `USERNAME` is your username (for me oechsel).
+
+The file `schema` is the schema of the dataset.
