@@ -22,37 +22,28 @@ def main(user, month):
 
 
 	df = spark.read.json('hdfs:///datasets/twitter_internetarchive/2017/'+month+'/*/*/*.json.bz2')
+
+
 	df_cleaned = df.where((F.col('timestamp_ms').isNotNull()) & (F.col('entities').isNotNull()) & (F.col('entities.hashtags').isNotNull()))
 	df_cleaned = df_cleaned.withColumn('timestamp_ms', df_cleaned.timestamp_ms.cast(LongType()))
-	#df_cleaned = df_cleaned.withColumn('created_timestamp', F.to_timestamp('created_at', '%a %b %d %H:%M:%S +z %Y'))
-
-	def create_entry(text, timestamp):
-		return (text, Entry(1, timestamp, timestamp))
-
+	df_cleaned = df_cleaned.withColumn('timestamp', F.from_unixtime(F.col('timestamp_ms')/1000).cast(DateType()))
+	df_cleaned = df_cleaned.withColumn('day_tweet', F.dayofmonth(F.col('timestamp')))
 	def expand(entry):
-		return [(x.text, entry.timestamp_ms) for x in entry.entities.hashtags]
-		return [create_entry(x.text, entry.created_timestamp) for x in entry.entities.hashtags]
-
-	def reduce_operation(a, b):
-		return Entry(a.count + b.count, min(a.min_timestamp, b.min_timestamp), max(a.max_timestamp, b.max_timestamp))
+	    return [(x.text, entry.day_tweet, entry.user.followers_count) for x in entry.entities.hashtags]
 
 	schema = StructType([
 	    StructField("tag", StringType(), True),
-	    StructField("timestamp", LongType(), True),
+	    StructField("day", LongType(), True),
+	    StructField("follower_count", LongType(), True),
 	])
-
+	days = range(1, 31 + 1)
+	exprs_days = [F.sum((F.col('day')==day).cast("long")).alias('count_'+str(day)) for day in days]
+	exprs_print = [F.sum((F.col('day')==day).cast("long") * F.col('follower_count')).alias('print_'+str(day)) for day in days]
 	other = df_cleaned.rdd.flatMap(expand).toDF(schema)
-	result = other.groupBy('tag').agg(F.count(F.lit(1)).alias('count'), F.min('timestamp').alias('min_timestamp'), F.max('timestamp').alias('max_timestamp'))
-	result.write.mode('overwrite').parquet('hashtags'+month+'.parquet')
-	"""
-	counts = df_cleaned.rdd.flatMap(expand).reduceByKey(reduce_operation).collect()
-	print(counts)
-	print(type(counts))
-	f = open("counts_hashtags.json", "w")
-	f.write(json.dumps(dict(counts)))
-	f.close()
-	df_cleaned.show(10)
-	"""
+	result = other.groupBy('tag').agg(F.count(F.lit(1)).alias('count'), F.sum(F.col('follower_count')).alias('print'), *(exprs_print + exprs_days))
+
+	result.write.mode('overwrite').parquet('hashtags_insights_'+month+'.parquet')
+
 if __name__ == "__main__":
 	if len(sys.argv) <= 2:
 		print("No user name and month provided")
