@@ -71,7 +71,7 @@ Pierre:
 - Scraping using Twint
 - Cleaning of the hashtag insights
 - Analysis of the hashtag insights
-- Plots for pagerank
+- Contributed to the pagerank algorithm and plots of the pagerank graphs
 - Code reviewing
 
 Romain :
@@ -83,6 +83,7 @@ Romain :
 Emiljano :
 - Scraping using Twint
 - Comparison of the timeline of #moiAussi and #BalanceTonPorc hashtags
+- Time-serie analysis of #BalanceTonPorc
 - Contributed to the pagerank algorithm
 - Historical and social analysis of the hashtags
 
