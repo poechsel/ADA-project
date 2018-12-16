@@ -66,8 +66,13 @@ The file `schema` is the schema of the dataset.
 
 Pierre:
 - Extraction of data from the cluster
-- Scraping using twint
+- Scraping using Twint
 - Cleaning of the hashtag insights
 - Analysis of the hashtag insights
 - Plots for pagerank
 - Code reviewing
+Romain :
+- Scraping using Twint
+- Complementary analysis of insights and #NotMyPresident
+- Historical analysis of #NotMyPresident and #BalanceTonPorc
+- Design, drafting and coding of the Data Story
