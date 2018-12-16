@@ -71,6 +71,7 @@ Pierre:
 - Analysis of the hashtag insights
 - Plots for pagerank
 - Code reviewing
+
 Romain :
 - Scraping using Twint
 - Complementary analysis of insights and #NotMyPresident
