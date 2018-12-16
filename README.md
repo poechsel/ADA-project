@@ -60,3 +60,14 @@ spark-submit --master yarn --deploy-mode client --driver-memory 4G --num-executo
 Where `USERNAME` is your username (for me oechsel).
 
 The file `schema` is the schema of the dataset.
+
+
+# Contributions:
+
+Pierre:
+- Extraction of data from the cluster
+- Scraping using twint
+- Cleaning of the hashtag insights
+- Analysis of the hashtag insights
+- Plots for pagerank
+- Code reviewing
