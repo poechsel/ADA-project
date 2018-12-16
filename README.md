@@ -79,3 +79,10 @@ Romain :
 - Complementary analysis of insights and #NotMyPresident
 - Historical analysis of #NotMyPresident and #BalanceTonPorc
 - Design, drafting and coding of the Data Story
+
+Emiljano :
+- Scraping using Twint
+- Comparison of the timeline of #moiAussi and #BalanceTonPorc hashtags
+- Contributed to the pagerank algorithm
+- Historical and social analysis of the hashtags
+
