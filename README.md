@@ -1,15 +1,16 @@
 Understanding Virality
 ===
 
-_How does information and influence propagate on social networks?_
+_How does information and influence propagate on Twitter?_
+
+_Data Story:_ http://understanding-virality.github.io/
 
 ## Abstract
 
-When looking at trending topics, users, tweets or videos on YouTube and Twitter, it is not always clear what made them popular. With this project, we want to understand the mechanisms that govern virality and popularity on these platforms. As this is a wide subject, we narrowed down our search to a few questions:
-- How do hashtags spread on Twitter? What happens between the time hashtags are first used and the time they reach Trending Topics?
+When looking at trending topics, users, and tweets, it is not always clear what made them popular. With this project, we want to understand the mechanisms that govern virality and popularity on Twitter. As this is a wide subject, we narrowed down our search to a few questions:
+- How do hashtags spread? What happens between the time hashtags are first used and the time they reach Trending Topics?
 - What are key ingredients that make a video or a tweet spread quickly?
 - Can we find metrics which discriminate "regular" Twitter users from celebrities or corporate accounts?
-- Are there patterns that govern subscriber growth on YouTube? Does it always start with a few viral videos, or can it be gained steadily?
 
 By doing this, we hope to not only gain a better understanding of how social media works, but also how we could help important issues gain traction or fight against users who use those mechanisms unfairly.
 
@@ -29,6 +30,7 @@ We had several datasets in mind, each providing a part of the answers we're afte
 - Data from the _Twitter Standard Search API_ (https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html), which we would use to export all the tweets with a given hashtag within a specific period of time. This would be like a scalpel, allowing us to extract more insights about a precise hashtag.
 - Data from _SocialBlade_ (https://socialblade.com), which would give us the evolution of the number of followers, subscribers and video views of Twitter and YouTube accounts over time. Although SocialBlade does not officially provide a complete dataset or an API to export their data, there are several unofficial scrapers available on GitHub, e.g. https://github.com/vinceh121/socialblade-api.
 
+In the end, we chose to use the Twitter dataset from the official list, plus `Twint` to scrape additional data for the `#NotMyPresident` and `#BalanceTonPorc` hashtags.
 
 ## Milestones
 
